@@ -1,0 +1,55 @@
+--- daemons/ipa-kdb/Makefile.am	2022-04-21 10:05:44.638628896 +0000
++++ daemons/ipa-kdb/Makefile.am	2024-06-14 11:46:56.758884000 +0000
+@@ -60,6 +60,7 @@
+ 	-module			\
+-	-Wl,--version-script,$(srcdir)/ipa_kdb.exports
++	-Wl,--version-script,$(srcdir)/ipa_kdb.exports \
++	-L$(libdir)/samba4 -Wl,-rpath=$(libdir)/samba4
+ 
+ ipadb_la_LIBADD = 		\
+ 	$(KRB5_LIBS)		\
+ 	$(LDAP_LIBS)		\
+@@ -67,6 +68,8 @@
+ 	$(UNISTRING_LIBS)	\
+ 	$(SSSCERTMAP_LIBS)	\
+ 	$(top_builddir)/util/libutil.la	\
++	-ltalloc		\
++	-lsamba-util		\
+         -lsamba-errors          \
+ 	$(NULL)
+ 
+@@ -105,7 +108,7 @@
+ endif
+ 
+ ipa_kdb_tests_CFLAGS = $(CMOCKA_CFLAGS)
+-ipa_kdb_tests_LDFLAGS = -L$(libdir)/samba -Wl,-rpath=$(libdir)/samba
++ipa_kdb_tests_LDFLAGS = -L$(libdir)/samba4 -Wl,-rpath=$(libdir)/samba4
+ ipa_kdb_tests_LDADD =          \
+        $(CMOCKA_LIBS)          \
+        $(KRB5_LIBS)            \
+@@ -118,6 +121,8 @@
+        -lsss_idmap             \
+        -lsamba-security-samba4 \
+        -lsamba-errors          \
++       -lsamba-util		\
++       -ltalloc 	      \
+        $(NULL)
+ 
+ appdir = $(libexecdir)/ipa
+@@ -142,11 +147,16 @@
+ 	$(NDRPAC_CFLAGS)		\
+ 	$(NULL)
+ 
++ipa_print_pac_LDFLAGS =  -L$(libdir)/samba4 -Wl,-rpath=$(libdir)/samba4
+ ipa_print_pac_LDADD =			\
+ 	$(KRB5_GSSAPI_LIBS)		\
+ 	$(KRB5_LIBS)			\
+ 	$(NDRPAC_LIBS)			\
+ 	$(POPT_LIBS)			\
++	-ltalloc		\
++       -lsamba-util		\
++	-lndr				\
++       -lndr-krb5pac		\
+ 	$(NULL)
+ 
+ clean-local:

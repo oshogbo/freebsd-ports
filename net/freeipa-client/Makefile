@@ -12,7 +12,10 @@ WWW=		https://www.freeipa.org/
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pip>0:devel/py-pip@${PY_FLAVOR}
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pip>0:devel/py-pip@${PY_FLAVOR} \
+		samba416>0:net/samba41 \
+		talloc>0:devel/talloc \
+		sssd2>0:security/sssd2
 
 LIB_DEPENDS=	libcmocka.so:sysutils/cmocka \
 		libcurl.so:ftp/curl \
@@ -23,6 +26,7 @@ LIB_DEPENDS=	libcmocka.so:sysutils/cmocka \
 		libpopt.so:devel/popt \
 		libpwquality.so:security/libpwquality \
 		libsasl2.so:security/cyrus-sasl2 \
+		libtalloc.so:devel/talloc \
 		libxmlrpc.so:net/xmlrpc-c
 
 USES=		autoreconf gettext gmake gssapi:mit ldap libtool \
@@ -30,11 +34,11 @@ USES=		autoreconf gettext gmake gssapi:mit ldap libtool \
 
 GNU_CONFIGURE=	yes
 GNU_CONFIGURE_MANPREFIX=${PREFIX}/share
+CFLAGS=-I/usr/local/include/samba4/
 CONFIGURE_ARGS=	--disable-dependency-tracking \
-		--disable-server \
 		--with-ipaplatform=freebsd \
 		--without-ipatests \
-		--without-server
+
 
 # Don't bytecode python files
 MAKE_ENV=	PYTHONDONTWRITEBYTECODE=1

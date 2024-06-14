@@ -1,0 +1,31 @@
+--- daemons/ipa-sam/Makefile.am	2024-06-14 12:07:46.631093000 +0000
++++ daemons/ipa-sam/Makefile.am	2021-11-25 17:34:42.587061412 +0000
+@@ -1,8 +1,9 @@
+ NULL =
+-LIBPDB_NAME = @LIBPDB_NAME@
++#LIBPDB_NAME = @LIBPDB_NAME@
++LIBPDB_NAME = $(top_srcdir)/daemons/ipa-kdb/.libs/ipadb.so
+ SAMBA40EXTRA_LIBS = $(SAMBA40EXTRA_LIBPATH)	\
+ 			-lsmbldap		\
+-			-l$(LIBPDB_NAME)			\
++			$(LIBPDB_NAME)			\
+ 			-lsmbconf		\
+ 			$(NULL)
+
+@@ -28,7 +28,7 @@
+ 	$(SSSIDMAP_CFLAGS)				\
+ 	$(NULL)
+ 
+-plugindir = $(libdir)/samba/pdb
++plugindir = $(libdir)/samba4/pdb
+ plugin_LTLIBRARIES = 		\
+ 	ipasam.la		\
+ 	$(NULL)
+@@ -41,6 +41,7 @@
+ ipasam_la_LDFLAGS = 		\
+ 	-avoid-version		\
+ 	-module			\
++	-L$(libdir)/samba4 -Wl,-rpath=$(libdir)/samba4 \
+ 	$(NULL)
+ 
+ ipasam_la_LIBADD = 		\

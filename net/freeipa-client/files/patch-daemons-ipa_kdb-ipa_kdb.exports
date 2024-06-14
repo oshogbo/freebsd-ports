@@ -1,0 +1,13 @@
+--- daemons/ipa-kdb/ipa_kdb.exports	2024-06-14 12:43:35.339417000 +0000
++++ daemons/ipa-kdb/ipa_kdb.exports	2021-11-25 17:34:42.578061384 +0000
+@@ -3,8 +3,8 @@
+ 	# public symbols
+ 	global:
+ 		kdb_function_table;
+-		certauth_ipakdb_initvt;
+-		kdcpolicy_ipakdb_initvt;
++		#certauth_ipakdb_initvt;
++		#kdcpolicy_ipakdb_initvt;
+ 
+ 	# everything else is local
+ 	local:
