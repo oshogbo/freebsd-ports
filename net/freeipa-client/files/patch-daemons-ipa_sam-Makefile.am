@@ -1,6 +1,6 @@
 --- daemons/ipa-sam/Makefile.am	2024-06-14 12:07:46.631093000 +0000
 +++ daemons/ipa-sam/Makefile.am	2021-11-25 17:34:42.587061412 +0000
-@@ -1,8 +1,9 @@
+@@ -1,8 +1,10 @@
  NULL =
 -LIBPDB_NAME = @LIBPDB_NAME@
 +#LIBPDB_NAME = @LIBPDB_NAME@
@@ -9,6 +9,7 @@
  			-lsmbldap		\
 -			-l$(LIBPDB_NAME)			\
 +			$(LIBPDB_NAME)			\
++			-lsss_idmap	\
  			-lsmbconf		\
  			$(NULL)
 
