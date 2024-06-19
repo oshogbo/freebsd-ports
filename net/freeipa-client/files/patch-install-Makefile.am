@@ -1,0 +1,13 @@
+--- install/Makefile.am	2021-11-25 17:34:42.605061469 +0000
++++ install/Makefile.am	2024-06-19 08:37:24.384464000 +0000
+@@ -7,10 +7,8 @@
+ SUBDIRS =			\
+         certmonger		\
+         custodia		\
+-        html			\
+         migration		\
+         share			\
+-        ui			\
+         tools			\
+         updates			\
+         restart_scripts		\
