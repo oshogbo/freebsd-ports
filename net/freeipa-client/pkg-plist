@@ -387,6 +387,7 @@ etc/ipa/epn/expire_msg.template
 %%PYTHON_SITELIBDIR%%/ipapython/session_storage.py
 %%PYTHON_SITELIBDIR%%/ipapython/ssh.py
 %%PYTHON_SITELIBDIR%%/ipapython/version.py
+lib/ipasam.so
 libexec/ipa/acme/certbot-dns-ipa
 share/man/man1/ipa-certupdate.1.gz
 share/man/man1/ipa-client-automount.1.gz
