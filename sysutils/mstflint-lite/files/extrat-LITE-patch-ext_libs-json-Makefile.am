@@ -1,0 +1,11 @@
+--- ext_libs/json/Makefile.am	2024-05-06 22:24:02.000000000 +0200
++++ ext_libs/json/Makefile.am	2024-07-01 16:42:55.240330000 +0200
+@@ -34,7 +34,7 @@
+ # Makefile.am -- Process this file with automake to produce Makefile.in
+ 
+ USER_DIR = ../
+-AM_CPPFLAGS = -W -Werror -g -MP -MD ${COMPILER_FPIC} -Wno-missing-field-initializers -Wno-unused-parameter
++AM_CPPFLAGS = -W -g -MP -MD ${COMPILER_FPIC} -Wno-missing-field-initializers -Wno-unused-parameter
+ noinst_LTLIBRARIES = libjson.la
+ libjson_la_SOURCES = json_reader.cpp  json_value.cpp  json_tool.h  json_writer.cpp  json/*.h
+ 

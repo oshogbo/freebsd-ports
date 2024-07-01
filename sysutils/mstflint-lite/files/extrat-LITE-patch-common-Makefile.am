@@ -1,0 +1,17 @@
+--- common/Makefile.am	2024-07-01 17:17:28.359348000 +0200
++++ common/Makefile.am  2024-07-01 17:17:27.684186000 +0200
+@@ -58,14 +58,4 @@
+ tools_version.h:
+ 	$(update_tools_version) < $(srcdir)/tools_version.h.in > tools_version.h
+ 
+-tools_version_pylibdir=$(libdir)/mstflint/python_tools/
+-tools_version_pylib_DATA = tools_version.py
+-
+-mft_logger_pylibdir=$(libdir)/mstflint/python_tools/
+-mft_logger_pylib_DATA = mft_logger.py
+-
+-EXTRA_DIST = tools_version.py.in python_wrapper.sh
+-
+-CLEANFILES = python_wrapper tools_version.py
+-
+ #SUBDIRS = autocomplete

@@ -1,0 +1,4 @@
+bin/mstconfig
+bin/mstflint
+share/man/man1/mstconfig.1.gz
+share/man/man1/mstflint.1.gz
