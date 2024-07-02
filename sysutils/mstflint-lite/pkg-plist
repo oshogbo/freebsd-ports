@@ -2,3 +2,5 @@ bin/mstconfig
 bin/mstflint
 share/man/man1/mstconfig.1.gz
 share/man/man1/mstflint.1.gz
+%%DATADIR%%/mlxconfig_dbs/mlxconfig_host.db
+%%DATADIR%%/mlxconfig_dbs/mlxconfig_switch.db
